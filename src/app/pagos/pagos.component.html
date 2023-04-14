@@ -1,0 +1,90 @@
+<div class="pagos_pagina">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="mt-5">
+                    <ngx-skeleton-loader count="{{totalCount}}" *ngIf="loader" animation="progress" [theme]="{height:'35px' }"></ngx-skeleton-loader>
+                </div>
+                <div *ngIf="!loader">
+                    <h2 class="title-main text-center mt-5">{{ titulo_principal_data }}</h2>
+                    <p class="text-center mb-5">{{ texto_principal_data }}</p>
+                </div>
+                <hr class="mb-5">
+            </div>
+        </div>
+        <div class="row mb-5 mt-1">
+            <div><ngx-skeleton-loader count="{{totalCountPagos}}" *ngIf="loader" animation="progress" appearance="circle" [theme]="{width: '270px',height: '290px','border-radius': '10px' }"></ngx-skeleton-loader></div>
+            <ng-container *ngFor="let tarjeta of tarjeta_convenio_data; let i = index">
+                <div *ngIf="!loader" class="col-xs-12 col-md-3 align-content-stretch align-items-stretch mt-2 mb-2 wow animate__animated animate__fadeInLeft">
+                    <div class="card card-pagos card-shadow-hover">
+                        <div class="card-body pt-4 pb-4">
+                            <img class="mb-3 d-block mx-auto img-fluid" src="{{ tarjeta.imagen_tarjeta}}" alt="Logo Convenio">
+                            <p class=text-justify>{{ tarjeta.texto_tarjeta }}</p>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn-wback text-center d-block mx-auto" data-toggle="modal" [attr.data-target]="'#'+'convenio'+i">
+                                Leer más
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="mt-5">
+                    <ngx-skeleton-loader count="{{totalCount}}" *ngIf="loader" [theme]="{height:'35px' }"></ngx-skeleton-loader>
+                </div>
+                <div *ngIf="!loader">
+                    <p class="title-general text-uppercase text-center">{{titulo_convenios_data}}</p></div>
+                </div>
+        </div>
+        <div class="row mb-5 mt-5 h-100 wow animate__animated animate__fadeInUp">
+            <ng-container *ngFor="let logo of convenios_logos_data">
+                <div class="col-md-2 my-auto">
+                    <a *ngIf="logo.link_convenio.length > 0; else logos" href="{{ logo.link_convenio }}" target="_blank">
+                        <img class="img-fluid d-block mx-auto p-3 scale" src="{{ logo.logo_convenio }}" alt="Logo Convenio">
+                    </a>
+                    <ng-template #logos>
+                        <img class="img-fluid d-block mx-auto p-3 scale" src="{{ logo.logo_convenio }}" alt="Logo Convenio">
+                    </ng-template>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 1 -->
+<ng-container *ngFor="let popup of tarjeta_convenio_data; let i = index">
+    <div class="modal fade" [attr.id]="'convenio'+i" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titlemodal">{{ popup.popup_tarjeta.titulo_popup }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-justify">{{ popup.popup_tarjeta.texto_popup }}</p>
+                    <div *ngIf="popup.popup_tarjeta.tabla_popup_filas != false">
+                        <table class="full-table mt-4 mb-4">
+                            <thead>
+                                <th>{{ popup.popup_tarjeta.tabla_popup_titulos.titulo1 }}</th>
+                                <th>{{ popup.popup_tarjeta.tabla_popup_titulos.titulo2 }}</th>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let item of popup.popup_tarjeta.tabla_popup_filas">
+                                    <tr>
+                                        <td>{{ item.texto1 }}</td>
+                                        <td>{{ item.texto2 }}</td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                    <img class="mb-3 d-block mx-auto img-fluid" src="{{ popup.popup_tarjeta.imagen_popup }}" alt="Logo">
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

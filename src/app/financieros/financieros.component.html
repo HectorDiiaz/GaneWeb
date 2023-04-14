@@ -1,0 +1,29 @@
+<div class="financieros_pagina bk-gray pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ngx-skeleton-loader count="1" *ngIf="loader" animation="progress" [theme]="{height:'35px' }"></ngx-skeleton-loader>
+                <div *ngIf="!loader"> 
+                    <h3 class="title35 text-center d-block mb-3" *ngIf="financieros_data.title">{{ financieros_data.title.rendered }}</h3>
+                </div>
+            </div>
+        </div>
+        <div>
+            <ngx-skeleton-loader class="d-flex" count="4" *ngIf="loader" animation="progress" appearance="circle" [theme]="{'width':'100%', 'height':'235px', 'border-radius':'12px' }"></ngx-skeleton-loader>
+        </div>
+        <div class="row" *ngIf="financieros_data.acf">
+            <ng-container *ngFor="let fina of financieros_data.acf.financieros">
+                <div class="col-xs-12 col-md-4 p-3 d-flex wow animate__animated animate__fadeInLeft">
+                    <div class="card d-flex justify-content-center p-4 border-radius border-0 box-shadow card-shadow-hover w-100">
+                        <a href="{{ fina.pdf }}" target="_blank">
+                            <p class="text-center mb-5">
+                                <img class="img-fluid" src="{{ fina.icono }}" alt="{{ fina.titulo }}">
+                            </p>
+                            <h3 class="text-center text-blue font-weight-bold">{{ fina.titulo }}</h3>
+                        </a>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

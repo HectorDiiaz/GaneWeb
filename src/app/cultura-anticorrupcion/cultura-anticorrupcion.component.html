@@ -1,0 +1,67 @@
+<div class="cultura-anticorrupcion_pagina pt-5 pb-5 bk-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <ngx-skeleton-loader count="1" *ngIf="loader" animation="progress" [theme]="{ 'width':'350px','height':'45px' }"></ngx-skeleton-loader>
+                <div *ngIf="!loader">
+                    <h3 class="montserrat font-weight-700 size35 line-height42 color-title">{{ titulo_data }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-5">
+                <ngx-skeleton-loader count="5" *ngIf="loader" animation="progress" [theme]="{ 'height':'35px' }"></ngx-skeleton-loader>
+                <div *ngIf="!loader" class="nav flex-column nav-pills wow animate__animated animate__fadeInLeft" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <ng-container *ngFor="let item of item_menu_data; let index = index">
+                        <a class="nav-link" [attr.id]="'v-tab-'+index" [ngClass]="{'active': index === activePillIndex}" data-toggle="pill" [attr.href]="'#'+'v-'+index" role="tab" aria-selected="true" (click)="selectPill(index)">{{ item.titulo_item }}</a>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-7">
+                <ngx-skeleton-loader count="1" *ngIf="loader" animation="progress" [theme]="{height:'230px' }"></ngx-skeleton-loader>
+                <ngx-skeleton-loader count="10" *ngIf="loader" animation="progress" [theme]="{height:'35px' }"></ngx-skeleton-loader>
+                <div *ngIf="!loader" class="tab-content" id="v-pills-tabContent">
+                    <ng-container *ngFor="let data of item_menu_data; let index = index">
+                        <div class="tab-pane fade show" [ngClass]="{'active': index === activePillIndex}" [attr.id]="'#'+'v-'+index" role="tabpanel">
+                            <img class="img-fluid mb-5 wow animate__animated animate__fadeInRight" *ngIf="data.imagen1" src="{{ data.imagen1 }}" alt="Corrupción">
+                            <img class="img-fluid mb-5 wow animate__animated animate__fadeInRight" *ngIf="data.imagen2" src="{{ data.imagen2 }}" alt="Corrupción">
+                            <p [innerHTML]="data.texto"></p>
+                            <a class="color-title" target="_blank" href="{{ data.link_politica_anticorrupcion }}">{{ data.texto_politica_anticorrupcion }}</a>
+                        </div>
+                    </ng-container>
+                </div>
+            <!--
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <img class="w-100 mb-5 wow animate__animated animate__fadeInRight" src="./assets/anticorrupcion_page/anticorrupcion-1.jpg" alt="Corrupción">
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        <img class="w-100 mb-5 wow animate__animated animate__fadeInRight" src="./assets/anticorrupcion_page/anticorrupcion-2.jpg" alt="Corrupción">
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <img class="w-100 mb-5 wow animate__animated animate__fadeInRight" src="./assets/anticorrupcion_page/anticorrupcion-3.png" alt="Corrupción">
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <img class="w-100 mb-4 wow animate__animated animate__fadeInRight" src="./assets/anticorrupcion_page/anticorrupcion-4.jpg" alt="Corrupción">
+                        <img class="w-100 mb-5" src="./assets/anticorrupcion_page/6PNG.jpg" alt="Corrupción">
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-en-linea" role="tabpanel" aria-labelledby="v-pills-en-linea-tab">
+                        <img class="w-100 mb-5 wow animate__animated animate__fadeInRight" src="./assets/anticorrupcion_page/1n9BSVNn5UPNG.jpg" alt="Corrupción">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12 mb-5">
+                                <p class="letter-spacing1-4 size19 text-gray-dark">los Accionistas, Colaboradores, Colocadores Independientes de Apuestas, Proveedores y demás Contrapartes. Consciente de estas consecuencias, la Gerencia está comprometida con los más altos estándares éticos en las interrelaciones con sus grupos de interés y con el cumplimiento de las leyes y regulaciones locales, nacionales y aquellas que le son aplicables al sector.<br>
+                                    <br>
+                                    Como respuesta a dicho compromiso, se establece la Política Anticorrupción, como un mecanismo para impulsar el desarrollo de acciones coordinadas para prevenir la corrupción, promover la transparencia en la gestión de la administración, disuadir las conductas indebidas e incentivar el compromiso de sus grupos de interés contra el fraude y la corrupción.
+                                </p>
+                                <p class="letter-spacing1-4 size19 text-gray-dark">La presente Política Anticorrupción establece los elementos estructurales como marco para prevenir, detectar, investigar y corregir eventos de corrupción y fraude. Así mismo asigna los roles y responsabilidades generales en el proceso de identificación de riesgos, diseño, implementación y evaluación de controles en la gestión de investigaciones relacionadas con eventos de corrupción y fraude.<br>
+                                    <br>
+                                    <a class="color-title" target="_blank" href="/assets/anticorrupcion_page/M-GR-07-Política-Anticorrupción-v3.pdf">Para conocer más al detalle los procedimientos de la Política Anticorrupción de click aquí</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="single-page pt-5 pb-5 bk-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-8">
+                <ngx-skeleton-loader count="3" *ngIf="loader" animation="progress" [theme]="{ 'width':'100%',height:'35px' }"></ngx-skeleton-loader>
+                <ngx-skeleton-loader count="1" *ngIf="loader" animation="progress" [theme]="{ 'width':'100%',height:'235px' }"></ngx-skeleton-loader>                
+                <ngx-skeleton-loader count="3" *ngIf="loader" animation="progress" [theme]="{ 'width':'100%',height:'35px' }"></ngx-skeleton-loader>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <ngx-skeleton-loader count="2" *ngIf="loader" animation="progress" [theme]="{ 'width':'100%',height:'350px' }"></ngx-skeleton-loader>
+            </div>
+        </div>
+        <div class="row" *ngIf="comunicado_data.acf">
+            <div class="col-xs-12 col-md-8">
+                <h3 class="size17 font-weight-bold" *ngIf="comunicado_data.title">{{ comunicado_data.title.rendered }}</h3>
+                <p class="size14 text-gray-dark">Boletín de Prensa<br>
+                    {{ comunicado_data.date | date:'fullDate' | titlecase }}, Santiago de Cali
+                </p>
+                <img class="img-fluid d-block mb-3"  src="{{comunicado_data.acf.imagen_interna}}" alt="Img Principal Comunicado">
+                <p class="size19 letter-spacing1-4 line-height23 opensans text-gray-dark" [innerHTML]="comunicado_data.content.rendered"></p>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <app-ruleta slotwrapper="slotwrapper-comunicado"></app-ruleta>
+                <div class="p-4 mt-4" style="background:url(./assets/home/ganevirtual.png);position:relative;background-size: cover;background-repeat: no-repeat;height: 340px;">
+                    <a class="btn btn-yellow-txt-white size18 position-absolute bottom-30 right-0 left-0" href="#">Ingresar ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

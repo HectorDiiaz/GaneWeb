@@ -1,0 +1,88 @@
+<div class="giros-pagina">
+    <div class="container bk-puntos section1">
+        <div class="row">
+            <div class="col-xs-12 col-md-6 my-auto">
+                <ngx-skeleton-loader count="{{totalCount}}" *ngIf="loader" animation="progress" [theme]="{height:'85px' }"></ngx-skeleton-loader>
+                <img *ngIf="!loader" class="mb-5 mt-5 img-60" src="{{ seccion1_supergiros_data.giros_img }}" alt="Supergiros">
+                <ngx-skeleton-loader count="4" *ngIf="loader" animation="progress" [theme]="{height:'25px' }"></ngx-skeleton-loader>
+                <p *ngIf="!loader" class="text-justify txt-giros">{{ seccion1_supergiros_data.textos_giros }}</p>
+                <ngx-skeleton-loader count="1" *ngIf="loader" animation="progress" [theme]="{ height:'35px' }"></ngx-skeleton-loader>
+                <div *ngIf="!loader">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a class="btn btn-supergiros txt-center" href="{{ seccion1_supergiros_data.btn_giros_inter }}" target="_blank">{{ seccion1_supergiros_data.texto_btn_giros_inter }}</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="btn btn-supergiros txt-center" href="{{ seccion1_supergiros_data.btn_protegiro }}" target="_blank">{{ seccion1_supergiros_data.texto_btn_protegiro }}</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="btn btn-supergiros txt-center" href="{{ seccion1_supergiros_data.btn_supertoken }}" target="_blank">{{ seccion1_supergiros_data.texto_btn_supertoken }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <ngx-skeleton-loader count="1" *ngIf="loader" animation="progress" [theme]="{ 'margin-top':'3rem', 'height':'385px', 'border-radius': '8px' }"></ngx-skeleton-loader>
+                <div *ngIf="!loader" class="container contenedor-calculo">
+                    <div class="row">
+                        <div class="formulario-giro mt-5 wow animate__animated animate__backInRight">
+                            <div class="title-giro"><h3>Calcula tu giro</h3></div>
+                            <app-calculatugiro></app-calculatugiro>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container section2">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <ngx-skeleton-loader count="5" *ngIf="loader" animation="progress" [theme]="{ 'margin-top':'10px', 'height':'25px'}"></ngx-skeleton-loader>
+                <table *ngIf="!loader" class="full-table mt-5 wow animate__animated animate__fadeInUp">
+                    <thead>
+                        <th>Desde</th>
+                        <th>Hasta</th>
+                        <th>Fletes</th>
+                        <th>Otros</th>
+                        <th class="celda-yellow">Total</th>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let item of seccion2_datostabla; let index = index">
+                            <tr>
+                                <td>{{item.desde}}</td>
+                                <td>{{item.hasta}}</td>
+                                <td>{{item.fletes}}</td>
+                                <td>{{item.otros}}</td>
+                                <td>{{item.total}}</td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+                    <!-- DivTable.com -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 mb-5 section3">
+        <div class="row wow animate__animated animate__fadeInUp">
+            <div class="col-xs-12 col-md-6">
+                <h2>{{seccion3_supergiros_data.titulo_seccion3}}</h2>
+                <p class="text-justify mt-4">{{seccion3_supergiros_data.texto_seccion3}}</p>
+                <a href="{{seccion3_supergiros_data.link_seccion3}}" target="_blank">{{seccion3_supergiros_data.texto_link_seccion3}}</a>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="row">
+                    <ng-container *ngFor="let banderin of banderas_seccion_data">
+                        <div class="col-xs-12 col-md-6 pt-3">
+                            <div class="card-internacional card-shadow-hover">
+                                <img src="{{banderin.bandera_img}}" alt="Bandera">
+                                <p class="txt-country size15 pl-3">{{banderin.bandera_texto}}</p>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
