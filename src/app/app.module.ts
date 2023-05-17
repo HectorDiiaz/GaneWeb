@@ -69,7 +69,8 @@ import { InterceptorService } from './interceptors/interceptor.service';
 import { NgSelect2Module } from 'ng-select2';
 import { ResultadosComponent } from './resultados/resultados.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PruebaComponent } from './soat/prueba/prueba.component'; 
 
 @NgModule({
   declarations: [
@@ -120,7 +121,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CalculatugiroComponent,
     Error404Component,
     RuletaComponent,
-    ResultadosComponent
+    ResultadosComponent,
+    PruebaComponent
   ],
   imports: [
     BrowserModule,

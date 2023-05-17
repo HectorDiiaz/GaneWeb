@@ -48,6 +48,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ResultadosComponent } from './resultados/resultados.component';
+import { PruebaComponent } from './soat/prueba/prueba.component';
 
 const APP_ROUTES: Routes = [
     {path: '', component: InicioComponent},
@@ -62,7 +63,7 @@ const APP_ROUTES: Routes = [
     {path: 'privacidad', component: PrivacidadComponent},
     {path: 'financieros', component: FinancierosComponent},
     {path: 'recargas', component: RecargasComponent},
-    {path: 'soat', component: SoatComponent},
+    {path: 'guias', component: SoatComponent},
     {path: 'campanas', component: CampanasComponent},
     {path: 'campana/:slug', component: CampanaComponent},
     {path: 'contactenos', component: ContactenosComponent},
@@ -91,6 +92,7 @@ const APP_ROUTES: Routes = [
     {path: 'importante', component: ImportanteComponent},
     {path: 'cultura-transparencia', component: CulturaTransparenciaComponent},
     {path: 'restaurante', component: RestauranteComponent},
+    {path: 'prueba', component:PruebaComponent},
     // {path: 'error', component: Error404Component},
     // {path: '**', pathMatch: 'full', redirectTo: 'inicio'}
     {path: '**', pathMatch: 'full', component: Error404Component}
